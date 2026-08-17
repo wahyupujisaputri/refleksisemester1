@@ -45,7 +45,7 @@
                             <li><a href="#refleksi-lk2" data-nav-course="pemahaman">Pemahaman tentang Peserta Didik dan Pembelajaran</a></li>
                             <li><a href="#refleksi-lk2" data-nav-course="pmad">Pembelajaran Mendalam dan Asesmen (PMA) Dasar</a></li>
                             <li><a href="#refleksi-lk2" data-nav-course="ppl">Praktik Pengalaman Lapangan (PPL) Terbimbing</a></li>
-                            <li><a href="#refleksi-lk2" data-nav-course="growth">Pola Pikir Bertumbuh (Growth Minset) dalam Pembelajaran</a></li>
+                            <li><a href="#refleksi-lk2" data-nav-course="growth">Pola Pikir Bertumbuh (Growth Mindset) dalam Pembelajaran</a></li>
                             <li><a href="#refleksi-lk2" data-nav-course="kreatif">Pembelajaran Kreatif Inovatif</a></li>
                         </ul>
                     </li>
@@ -327,7 +327,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-7.54 16.59c.2.25.31.57.31.9v2.51a1 1 0 0 0 1 1h12.46a1 1 0 0 0 1-1v-2.51c0-.33.11-.65.31-.9A10 10 0 0 0 12 2z"/></svg>
                                 </div>
                                 <div class="course-card-details">
-                                    <h3>Pola Pikir Bertumbuh (Growth Minset) dalam Pembelajaran</h3>
+                                    <h3>Pola Pikir Bertumbuh (Growth Mindset) dalam Pembelajaran</h3>
                                     <div class="course-info-row">
                                         <span>2 SKS</span>
                                         <span>•</span>
@@ -551,6 +551,13 @@
                 <!-- Google Drive Iframe Preview -->
                 <div class="iframe-preview-container" id="iframe-preview-container" style="display: none;">
                     <iframe id="artifact-iframe" src="" width="100%" height="100%" style="border: none;" allow="autoplay"></iframe>
+                    <div id="sites-preview-wrapper" style="display: none; height: 100%; position: relative; cursor: pointer; text-align: center; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <img src="google_sites_preview.png" alt="Google Sites Preview" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.95; transition: transform 0.3s ease;">
+                        <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; opacity: 0; transition: opacity 0.3s ease;" class="hover-overlay">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 48px; height: 48px; margin-bottom: 12px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            <span style="font-weight: 600; font-size: 1.1rem; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Buka E-Portofolio di Google Sites</span>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="modal-desc-box">
@@ -565,8 +572,12 @@
                 </div>
             </div>
             
-            <div class="modal-footer">
-                <button class="modal-close-action-btn close-modal">Tutup Pratinjau</button>
+            <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <a id="modal-external-link" href="" target="_blank" rel="noopener noreferrer" class="modal-close-action-btn" style="background: transparent; color: var(--accent-color, #3b82f6); border: 1px solid var(--accent-color, #3b82f6); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center; padding: 0.75rem 1.25rem; font-size: 0.9rem; font-weight: 600; border-radius: 0.375rem;">
+                    Buka di Tab Baru
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1rem; height: 1rem;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+                <button class="modal-close-action-btn close-modal" style="margin: 0;">Tutup Pratinjau</button>
             </div>
         </div>
     </div>
