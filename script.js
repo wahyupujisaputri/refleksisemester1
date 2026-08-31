@@ -669,6 +669,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // PDF Refleksi Section Card Switcher
+    const pdfCourseCards = document.querySelectorAll(".pdf-course-card");
+    const pdfMainIframe = document.getElementById("pdf-main-iframe");
+    const pdfViewerTitle = document.getElementById("pdf-viewer-title");
+    const pdfExternalLink = document.getElementById("pdf-external-link");
+
+    if (pdfCourseCards.length > 0) {
+        pdfCourseCards.forEach(card => {
+            card.addEventListener("click", () => {
+                // Remove active class from all pdf course cards
+                pdfCourseCards.forEach(c => c.classList.remove("active"));
+                
+                // Add active class to clicked card
+                card.classList.add("active");
+                
+                // Get data attributes
+                const pdfUrl = card.getAttribute("data-pdf-url");
+                const driveUrl = card.getAttribute("data-drive-url");
+                const courseTitle = card.querySelector("h3").innerText;
+                
+                // Update viewer elements
+                if (pdfMainIframe) pdfMainIframe.src = pdfUrl;
+                if (pdfViewerTitle) pdfViewerTitle.innerText = courseTitle;
+                if (pdfExternalLink) pdfExternalLink.href = driveUrl;
+            });
+        });
+    }
+
     // Auto-select first course (Filosofi) on load
     const firstCourse = document.querySelector(".course-card[data-course='filosofi']");
     if (firstCourse) {
