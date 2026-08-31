@@ -621,12 +621,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             
             modalDocTitle.innerText = file.title;
-            modalDocMeta.innerHTML = `<span>Kode Dokumen: PPG-${activeCourseId.toUpperCase()}-0${Math.floor(Math.random() * 9) + 1}</span><span>${file.meta}</span>`;
+            modalDocMeta.innerHTML = `<span>Kode Dokumen: PPG-${activeCourseId ? activeCourseId.toUpperCase() : 'DOC'}-0${Math.floor(Math.random() * 9) + 1}</span><span>${file.meta || 'Dokumen Refleksi'}</span>`;
             modalDocContent.innerText = file.content;
         }
         
-        modalDescWhy.innerText = whyText;
-        modalDescSupport.innerText = supportText;
+        const descBox = document.querySelector(".modal-desc-box");
+        if (whyText || supportText) {
+            if (descBox) descBox.style.display = "flex";
+            if (modalDescWhy) modalDescWhy.innerText = whyText || "";
+            if (modalDescSupport) modalDescSupport.innerText = supportText || "";
+        } else {
+            if (descBox) descBox.style.display = "none";
+        }
         
         modal.classList.add("show");
     }
@@ -669,30 +675,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // PDF Refleksi Section Card Switcher
+    // PDF Refleksi Section Card Click Handler (Opens Overlay Modal Directly)
     const pdfCourseCards = document.querySelectorAll(".pdf-course-card");
-    const pdfMainIframe = document.getElementById("pdf-main-iframe");
-    const pdfViewerTitle = document.getElementById("pdf-viewer-title");
-    const pdfExternalLink = document.getElementById("pdf-external-link");
 
     if (pdfCourseCards.length > 0) {
         pdfCourseCards.forEach(card => {
             card.addEventListener("click", () => {
-                // Remove active class from all pdf course cards
                 pdfCourseCards.forEach(c => c.classList.remove("active"));
-                
-                // Add active class to clicked card
                 card.classList.add("active");
                 
-                // Get data attributes
                 const pdfUrl = card.getAttribute("data-pdf-url");
                 const driveUrl = card.getAttribute("data-drive-url");
                 const courseTitle = card.querySelector("h3").innerText;
                 
-                // Update viewer elements
-                if (pdfMainIframe) pdfMainIframe.src = pdfUrl;
-                if (pdfViewerTitle) pdfViewerTitle.innerText = courseTitle;
-                if (pdfExternalLink) pdfExternalLink.href = driveUrl;
+                openArtifactViewer({
+                    title: `Refleksi PDF: ${courseTitle}`,
+                    driveUrl: pdfUrl
+                }, "", "");
+
+                const extLink = document.getElementById("modal-external-link");
+                if (extLink && driveUrl) {
+                    extLink.href = driveUrl;
+                }
             });
         });
     }
